@@ -21,23 +21,50 @@ export default function Page() {
 
 
       <div className="flex flex-1 flex-col py-6 px-6">
-        <div className=" grid grid-cols-6 grid-rows-6 grid-flow-col flex flex-1 flex-col gap-4 p-4 pt-0">
 
-          <div className="border border-black row-span-3"></div>
-          <div className="border border-black row-span-3"></div>
-          <div className="border border-black row-span-6 col-span-5"></div>
+        {/* Main div for establishing grid structure */}
+        <div className=" grid grid-cols-12 grid-rows-12 grid-flow-col flex flex-1 flex-col gap-4 px-4 py-2 pt-0">
+
+
+          {/* Div for defining Prompt */}
+          <div className="flex flex-col py-6 px-2 gap-1 border border-black row-span-6 col-span-3">
+
+            <h2 className="text-center text-2xl border border-black">Docs in one click</h2>
+            <h4 className="text-sm border border-black">Generate, edit, and Share all with Devscribe</h4>
+            <input  className="flex align-text-top flex-1 mt-2 border border-black" 
+                    placeholder="Define Prompt"/>
+          </div>
+
+
+          {/* Div for uploading docs repos and template */}
+          <div className="flex flex-col justify-between py-8 border border-black row-span-6 col-span-3">
+
+            <div className="border border-black mx-auto">Add Documents or Repository Link</div>
+            <button className="py-4 mx-6 rounded-xl border border-black ">Documents</button>
+            <button className="py-4 mx-6 rounded-xl border border-black">Repository</button>
+            <div className="border border-black mx-auto">Choose your template</div>
+            <button className="py-4 mx-6 rounded-xl border border-black">+</button>
+          </div>
+          
+          {/* This is where the generated text is going to show up */}
+          <div className="border border-black p-6 row-span-12 col-span-9">
+
+            <input  className="w-full h-full p-6 border border-black" 
+                    placeholder="Outputted Text Will Appear Here"/>
+          </div>
 
         </div>
 
-        <div className="flex flex-row justify-between">
+        {/* This is the div below the main div section */}
+        <div className="border border-black flex flex-row justify-between py-2">
 
-          <div>
-            <button>Generate Documentation</button>
+          <div className="border border-black  px-4">
+            <button className="border border-black py-2 px-6">Generate Documentation</button>
           </div>
 
-          <div className="flex px-4 gap-4">
-            <button className="border border-solid px-8">Edit</button>
-            <button className="border border-solid px-8">Export</button>
+          <div className="border border-black flex px-4 gap-4">
+            <button className="border border-black px-8">Edit</button>
+            <button className="border border-black px-8">Export</button>
           </div>
 
         </div>
