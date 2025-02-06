@@ -1,13 +1,26 @@
+"use client"
+
 import { AppSidebar } from "@/components/app-sidebar"
+import EasyMDEEditor from "./mde";
+
+
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
+import { useState } from "react";
+
 export default function Page() {
+
+  const [output, setOutput] = useState(`## #Whats going on *italic* and **bold**`);
+
+
+
   return (
-    (<SidebarProvider>
+
+      (<SidebarProvider>
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -48,12 +61,17 @@ export default function Page() {
           
           {/* This is where the generated text is going to show up */}
           <div className="border border-black p-6 row-span-12 col-span-9">
-
-            <input  className="w-full h-full p-6 border border-black" 
-                    placeholder="Outputted Text Will Appear Here"/>
+                  <EasyMDEEditor />
           </div>
 
         </div>
+
+
+
+
+
+
+
 
         {/* This is the div below the main div section */}
         <div className="border border-black flex flex-row justify-between py-2">
@@ -79,8 +97,3 @@ export default function Page() {
 }
 
 
-
-// 1. lets figure out how to get all the components words being our stuff
-// 2. get rid of all of the extra stuff like breadcrumb
-// 3. put up divs and make it formatted like in giannis figma
-// 4. if still time, add dark mode
