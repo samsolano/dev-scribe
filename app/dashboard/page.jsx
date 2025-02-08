@@ -2,7 +2,7 @@
 
 import { AppSidebar } from "@/components/app-sidebar"
 import EasyMDEEditor from "./mde";
-
+import axios from "axios";
 
 import {
   SidebarInset,
@@ -10,12 +10,31 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Page() {
 
-  const [output, setOutput] = useState(`## #Whats going on *italic* and **bold**`);
+  const [output, setOutput] = useState("");
 
+
+
+
+  const fetchData = async () => {
+    const response = await axios.get("http://127.0.0.1:5000");
+      setOutput(response.data); // Update state only if component is mounted
+      console.log(output.message)
+
+  }
+  
+    // useEffect(() => {
+
+    //   let isMounted = true;
+
+    //   return () => {
+    //     isMounted = false; // Cleanup function to prevent updating unmounted state
+    //   };
+
+    // }, []);
 
 
   return (
@@ -61,7 +80,10 @@ export default function Page() {
           
           {/* This is where the generated text is going to show up */}
           <div className="border border-black p-6 row-span-12 col-span-9">
-                  <EasyMDEEditor />
+                  {/* <EasyMDEEditor /> */}
+
+                  <EasyMDEEditor content={output}/>
+
           </div>
 
         </div>
@@ -77,7 +99,8 @@ export default function Page() {
         <div className="border border-black flex flex-row justify-between py-2">
 
           <div className="border border-black  px-4">
-            <button className="border border-black py-2 px-6">Generate Documentation</button>
+            <button  onClick={fetchData}
+                    className="border border-black py-2 px-6">Generate Documentation</button>
           </div>
 
           <div className="border border-black flex px-4 gap-4">
